@@ -11,3 +11,11 @@ export const PARQUET = {
   incidentVars: `${DATA_BASE}/parquet/incident_vars.parquet`
 };
 export const BASEMAP = `${DATA_BASE}/basemap/MTL_quartier.geojson`;
+
+export const SEVERITIES = [
+  'Morte',
+  'Grave',
+  'Léger',
+  'Dommages matériels seulement',
+  'Dommages matériels inférieurs au seuil de rapportage'
+] as const;
