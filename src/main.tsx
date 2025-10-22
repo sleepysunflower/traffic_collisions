@@ -7,6 +7,14 @@ import App from "./App";
 import ModelPage from "./model";
 import "./styles.css";
 import { registerChartsTheme } from './theme'
+// read redirected path on GH Pages fallback
+const params = new URLSearchParams(location.search);
+const redirected = params.get('p');
+if (redirected) {
+  const url = new URL(location.href);
+  url.searchParams.delete('p');
+  history.replaceState(null, '', redirected + url.search + url.hash);
+}
 
 registerChartsTheme()
 ReactDOM.createRoot(document.getElementById("root")!).render(
