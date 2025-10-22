@@ -5,5 +5,5 @@ export default defineConfig({
   plugins: [react()],
   base: './',
   server: { port: 5173 },
-  build: { target: 'es2020' }
+  build: { target: 'es2020' } // no rollupOptions needed anymore
 })

@@ -1,0 +1,93 @@
+variable,feature,importance
+population_aw,population,0.205049697
+intersection_count,intersection count,0.12657787
+poi_total,poi total,0.058579973
+landuse__Activités diversifiées,landuse:diversified,0.054400142
+aadt_mean,aadt,0.053987685
+landuse__Dominante résidentielle,landuse: residential,0.038185377
+RC_rc_2010_indice iri,IRI 2010,0.034073437
+RC_rc_2010_indice pci,PCI 2010,0.032277692
+poi_type__Poste d'attente de taxis,POI: taxi stand,0.022734164
+poi_type__Hôtel,POI: hotel,0.022339855
+landuse__Centre-ville d'agglomération,landuse: citycenter,0.020752197
+RC_rc_2015_indice iri,IRI 2015,0.019551404
+poi_type__Station de métro,POI: metro,0.017891978
+RC_rc_2015_indice pci,PCI 2015,0.017882985
+landuse__Industrie,landuse: industry,0.015998035
+poi_type__Organisme communautaire et centre de loisirs,POI: recreation,0.013907849
+landuse__Conservation,landuse: conservation,0.011060894
+poi_type__Théâtre / salle de spectacle / petit lieu de diffusion,POI: theatre,0.010954334
+solar_radiation_v,solar radiation,0.010392562
+RC_rc_2018_indice iri,IRI 2018,0.010230859
+max_wind_speed_v,max wind speed,0.010006067
+landuse__Grand espace vert ou récréation,landuse: greenspace,0.009744678
+min_relative_humidity_v,min humidity,0.009367404
+RC_rc_2018_indice pci,PCI 2018,0.009067686
+max_relative_humidity_v,max humidity,0.009010104
+precipitation_v,precipitation,0.008876617
+poi_type__Parc,POI: parks,0.008557345
+rain_v,rain,0.008553121
+max_dew_point_v,max dew point,0.008278148
+min_temperature_v,min temperature,0.008189855
+min_dew_point_v,min dew point,0.008186935
+max_temperature_v,max temperature,0.00812833
+poi_type__Art public,POI: art,0.00712012
+poi_type__Artère commerciale,POI: commercial,0.00685351
+poi_type__Centre commercial,POI: mall,0.006427526
+snow_v,snow,0.006028687
+landuse__Grande emprise ou grande infrastructure publique,landuse:public infrastructure,0.005469638
+poi_type__Centre de service gouvernemental,POI: governmental,0.005391699
+snow_on_ground_v,snow on ground,0.004295254
+poi_type__Autre catégorie d'établissement d'hébergement,POI: other,0.004068987
+poi_type__Service consulaire,POI: consulate,0.00378692
+poi_type__Bibliothèque publique,POI: library,0.003640923
+poi_type__Rue piétonne,POI: pedestrian street,0.003405005
+poi_type__Place publique,POI: public space,0.00312619
+poi_type__École primaire,POI: primary school,0.003091064
+poi_type__École secondaire et professionnelle,POI: secondary school,0.00293984
+poi_type__CLSC,POI:CLSC ,0.002536813
+poi_type__Caserne de pompiers,POI: fire station,0.002473235
+landuse__Agricole,POI: agriculture,0.002075758
+poi_type__Cégep et université,POI: cegep,0.002025104
+poi_type__Hôpital,POI: Hospital,0.001624874
+poi_type__Police de quartier,POI: police,0.001586478
+poi_type__Jardin communautaire,POI: community garden ,0.001581796
+poi_type__Musée et centre d'interprétation / d'exposition,POI: museum,0.001498224
+poi_type__Centre sportif intérieur,POI: sport center ,0.001385808
+poi_type__Bâtiment historique / patrimonial,POI: monument,0.001295781
+poi_type__Bureau Accès Montréal et bureaux municipaux,POI: office,0.001189326
+poi_type__Auberge de jeunesse,POI: hostel,0.001106031
+poi_type__Piscine intérieure,POI: pool,0.001081811
+poi_type__Lieu de diffusion municipal,POI: broadcasting,0.000992888
+poi_type__Pôle de mobilité,POI: mobility,0.000942735
+poi_type__Éco-quartier,POI: ecoquarier,0.000866027
+poi_type__Cinéma,POI: cinema ,0.000751564
+poi_type__Marché public,POI: public market ,0.00073258
+poi_type__Gare de train,POI: train station,0.000701586
+poi_type__Piscine extérieure,POI: outdoor pool ,0.000692628
+poi_type__Hôtel de ville / mairie,POI: city hall ,0.000477461
+poi_type__Bâtiment architectural / design,architectural building,0.000458033
+poi_type__Clinique,POI: clinic,0.000439341
+poi_type__Galerie d'art,POI: art gallery ,0.000429852
+poi_type__Centre de récupération et de tri,POI: recycle center ,0.000420114
+poi_type__Service communautaire,POI: community service ,0.000378694
+poi_type__Toilette publique,POI: toilet ,0.000279012
+poi_type__Centre de réadaptation,POI: readaptation center ,0.000220508
+poi_type__Équipement sportif extérieur,POI: outdoor sports ,0.000211296
+poi_type__Attrait touristique sportif ou récréatif,POI: Sports or recreational tourist attraction ,0.000192998
+poi_type__Infotouriste,POI: infotourist ,0.000150557
+poi_type__Attrait touristique culturel,POI: cultural tourist attraction ,0.000138842
+poi_type__Attrait touristique commercial,POI: commercial tourist attraction ,0.000109606
+poi_type__Agence internationale,POI: international agence ,9.32E-05
+poi_type__CSSS,POI: CSSS ,8.86E-05
+poi_type__Centre de congrès / d'exposition,POI: exposition center ,7.51E-05
+poi_type__Palais de justice / cour,POI: court,7.43E-05
+poi_type__Bibliothèque privée,POI: private library ,6.49E-05
+poi_type__Bureau d'information touristique,POI: tourist office,3.76E-05
+poi_type__Musée municipal,POI: municipal museum ,2.56E-05
+poi_type__Parcours,POI: route ,1.81E-05
+poi_type__Marina,POI: marina ,1.54E-05
+poi_type__Terminal d'autobus,POI: bus terminal ,1.32E-05
+poi_type__Jeux d'eau,POI: waterfun ,5.92E-06
+RC_rc_2020_etat_iri,IRI 2020,0
+RC_rc_2020_etat_pci,PCI 2020,0

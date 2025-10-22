@@ -1,5 +1,25 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 
-createRoot(document.getElementById('root')!).render(<App />)
+import Landing from "./Landing";
+import App from "./App";
+import ModelPage from "./model";
+import "./styles.css";
+import { registerChartsTheme } from './theme'
+
+registerChartsTheme()
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/dashboard" element={<App />} />
+        {/* IMPORTANT: allow subpaths like /model/occurrence and /model/severity */}
+        <Route path="/model/*" element={<ModelPage />} />
+        {/* Fallback: go to occurrence */}
+        <Route path="*" element={<Navigate to="/model/occurrence" replace />} />
+      </Routes>
+    </HashRouter>
+  </React.StrictMode>
+);

@@ -1,0 +1,325 @@
+/* ========================================================================
+   Model-only stylesheet (scoped). Nothing here affects the dashboard.
+   Palette: #090909, #262626, #8E1616, #D84040, #808080, #FFFFFF
+   ====================================================================== */
+
+.model-scope {
+  --c-black: #090909;
+  --c-dark: #262626;
+  --c-red: #8E1616;
+  --c-red-bright: #D84040;
+  --c-gray: #808080;
+  --c-white: #FFFFFF;
+
+  --radius: 16px;
+  --pad: 16px;
+  --gap: 12px;
+
+  color: #eee;
+  background: transparent;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Cards, header, badges -------------------------------------------------- */
+.model-scope .card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+  border: 1px solid #2a2a2a;
+  border-radius: var(--radius);
+  padding: var(--pad);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+
+.model-scope .card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.model-scope .card-title {
+  font-weight: 700;
+  color: #fff;
+}
+
+.model-scope .card-subtitle {
+  color: #bdbdbd;
+  font-size: 12px;
+}
+
+.model-scope .badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  background: #1a1a1a;
+  border: 1px solid #2e2e2e;
+  color: #d8d8d8;
+}
+
+/* Buttons --------------------------------------------------------------- */
+.model-scope .btn {
+  background: #1c1c1c;
+  border: 1px solid #2f2f2f;
+  color: #eaeaea;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.model-scope .btn:hover { border-color: #444; }
+
+.model-scope .btn.primary {
+  background: linear-gradient(180deg, var(--c-red), #5f0f0f);
+  border-color: var(--c-red);
+  color: #fff;
+}
+
+.model-scope .icon-btn {
+  background: #151515;
+  border: 1px solid #2d2d2d;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.model-scope .icon-btn:hover { border-color: #444; }
+
+/* Grid layout helpers --------------------------------------------------- */
+.model-scope .model-two-col {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.model-scope .mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Fullscreen overlay for charts ---------------------------------------- */
+.model-scope .fullscreen-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.8);
+  display: flex; flex-direction: column;
+}
+.model-scope .fullscreen-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; border-bottom: 1px solid #2a2a2a; background: #0f0f0f;
+}
+.model-scope .fullscreen-body {
+  flex: 1; padding: 12px; display: flex; align-items: center; justify-content: center;
+}
+.model-scope .fullscreen-chart {
+  width: min(1600px, 95vw);
+  height: min(900px, 85vh);
+  background: #101010; border: 1px solid #2a2a2a; border-radius: 12px; padding: 8px;
+}
+
+/* =========================
+   COMPACT FORM SYSTEM
+   ========================= */
+
+/* Strict 2-up field grid, consistent spacing */
+.model-scope .form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+/* Each field is label + control, stacked */
+.model-scope .field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Labels compact and aligned */
+.model-scope .field-label {
+  font-size: 11px;
+  line-height: 1.2;
+  color: #bdbdbd;
+  user-select: none;
+}
+
+/* ---- Input NORMALIZER (ensures our sizes win over any legacy rules) ---- */
+.model-scope .input {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  background: #141414 !important;
+  color: #eee !important;
+  border: 1px solid #333 !important;
+  border-radius: 8px !important;
+  outline: none !important;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+/* Compact size token – apply to both numbers and selects */
+.model-scope .ctrl-xs {
+  height: 26px !important;           /* exact compact height */
+  line-height: 26px !important;      /* centers input text */
+  padding: 0 8px !important;         /* tight padding so box doesn't look bigger */
+  font-size: 12px !important;
+}
+
+/* Focus ring in red */
+.model-scope .input.ctrl-xs:focus,
+.model-scope select.ctrl-xs:focus {
+  border-color: var(--c-red-bright) !important;
+  box-shadow: 0 0 0 2px rgba(216, 64, 64, 0.25) !important;
+}
+
+/* Keep selects visually matching the 26px box */
+.model-scope select.ctrl-xs {
+  appearance: auto;                  /* keep native caret */
+  padding-right: 26px !important;    /* space for caret */
+}
+
+/* Numbers: remove ugly spinner/arrows, keep same height as select */
+.model-scope input[type="number"].ctrl-xs {
+  appearance: textfield !important;      /* Chrome/Edge/Safari */
+  -moz-appearance: textfield !important; /* Firefox */
+  line-height: 26px !important;
+}
+
+/* WebKit spinner removal */
+.model-scope input[type="number"].ctrl-xs::-webkit-outer-spin-button,
+.model-scope input[type="number"].ctrl-xs::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+/* Make placeholder text subtle */
+.model-scope .input::placeholder { color: #8a8a8a; }
+
+/* When disabled */
+.model-scope .input:disabled {
+  opacity: 0.6; cursor: not-allowed;
+}
+
+/* ===== Dropdown menu coloring (hover + selected) ========================
+   NOTE: Native select menus are OS-controlled; Chrome/Edge/Firefox honor
+   option background overrides; macOS may still enforce native styling.
+   We set all relevant states to red to maximize consistency.
+   ====================================================================== */
+.model-scope select.ctrl-xs option:hover,
+.model-scope select.ctrl-xs option:checked,
+.model-scope select.ctrl-xs option:focus,
+.model-scope select.ctrl-xs:focus option:checked {
+  background-color: var(--c-red) !important;
+  color: #ffffff !important;
+}
+
+/* For Firefox: selection color inside the collapsed control */
+@-moz-document url-prefix() {
+  .model-scope select.ctrl-xs:-moz-focusring {
+    color: #fff; text-shadow: 0 0 0 #fff;
+  }
+}
+
+/* Tables (classification report) -------------------------------------- */
+.model-scope table.text-sm th,
+.model-scope table.text-sm td {
+  font-size: 12px;
+}
+
+.model-scope table.text-sm thead tr {
+  background: #121212;
+}
+
+.model-scope table.text-sm thead th {
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.model-scope table.text-sm tbody tr:nth-child(2n) {
+  background: rgba(255,255,255,0.02);
+}
+
+/* Utility spacing (keep minimal) --------------------------------------- */
+.model-scope .mt-3 { margin-top: 12px; }
+.model-scope .grid { display: grid; }
+.model-scope .gap-4 { gap: 16px; }
+
+/* === NAV BUTTONS (Back / Occurrence / Severity) ======================= */
+.model-scope .nav-btn {
+  background: #8E1616;
+  color: #e6e6e6;
+  border: 1px solid #b12a2a;
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  cursor: pointer;
+}
+.model-scope .nav-btn:hover {
+  border-color: #D84040;
+  color: #ffffff;
+}
+
+/* === CUSTOM SELECT (fully themed; red hover + selected) ================ */
+.model-scope .select-shell {
+  position: relative;
+}
+.model-scope .select-display.input.ctrl-xs {
+  padding-right: 28px !important;
+  cursor: pointer;
+  user-select: none;
+}
+.model-scope .select-caret {
+  position: absolute;
+  top: 0; right: 8px; height: 100%;
+  display: grid; place-items: center;
+  pointer-events: none; color: #cfcfcf;
+  font-size: 12px;
+}
+
+/* dropdown list */
+.model-scope .select-list {
+  position: absolute; z-index: 40; left: 0; right: 0;
+  margin-top: 6px;
+  background: #0f0f0f;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  max-height: 240px; overflow: auto;
+  box-shadow: 0 10px 28px rgba(0,0,0,.45);
+}
+.model-scope .select-item {
+  padding: 8px 10px; font-size: 12px;
+  color: #e6e6e6; cursor: pointer;
+}
+.model-scope .select-item:hover,
+.model-scope .select-item.is-active {
+  background: #8E1616; color: #ffffff;
+}
+
+/* make field rows tight and aligned (2 per row) */
+.model-scope .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+
+/* exact match of input/select height */
+.model-scope .ctrl-xs { height: 26px !important; line-height: 26px !important; padding: 0 8px !important; font-size: 12px !important; }
+.model-scope input[type="number"].ctrl-xs {
+  appearance: textfield !important;
+  -moz-appearance: textfield !important;
+}
+.model-scope input[type="number"].ctrl-xs::-webkit-outer-spin-button,
+.model-scope input[type="number"].ctrl-xs::-webkit-inner-spin-button { -webkit-appearance: none !important; margin: 0 !important; }
+
+/* Remove underline on header nav buttons (in case of <a>) */
+.model-scope .nav-btn { text-decoration: none; }
+
+/* Coherent body text (does NOT affect charts or inputs) */
+.model-scope .body-text {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #e6e6e6;
+}
+
+/* Coherent title size across sections (confined to model cards) */
+.model-scope .card-title {
+  font-size: 16px;
+  font-weight: 700;
+}

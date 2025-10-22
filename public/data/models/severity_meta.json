@@ -1,0 +1,52 @@
+{
+  "num_cols": [
+    "AN",
+    "VITESSE_AUTOR",
+    "nb_automobile_camion_leger",
+    "nb_camionLourd_tractRoutier",
+    "nb_outil_equipement",
+    "nb_tous_autobus_minibus",
+    "nb_bicyclette",
+    "nb_cyclomoteur",
+    "nb_motocyclette",
+    "nb_taxi",
+    "nb_urgence",
+    "nb_motoneige",
+    "nb_VHR",
+    "nb_autres_types",
+    "nb_veh_non_precise",
+    "month",
+    "quarter",
+    "hour"
+  ],
+  "cat_cols": [
+    "JR_SEMN_ACCDN",
+    "CD_GENRE_ACCDN",
+    "CD_SIT_PRTCE_ACCDN",
+    "CD_ETAT_SURFC",
+    "CD_ECLRM",
+    "CD_ENVRN_ACCDN",
+    "CD_CATEG_ROUTE",
+    "CD_ETAT_CHASS",
+    "CD_ASPCT_ROUTE",
+    "CD_LOCLN_ACCDN",
+    "CD_POSI_ACCDN",
+    "CD_CONFG_ROUTE",
+    "CD_ZON_TRAVX_ROUTR",
+    "CD_COND_METEO",
+    "time_of_day"
+  ],
+  "thresholds": [
+    0.7318168137550043,
+    1.0951247359239393,
+    1.62611323755546,
+    1.6820067640429883
+  ],
+  "severity_labels": [
+    "Below reporting threshold",
+    "Property damage only",
+    "Minor injury",
+    "Serious injury",
+    "Fatal"
+  ]
+}

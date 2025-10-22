@@ -1,8 +1,10 @@
 export const DATA_BASE = './data';
+const bust = `?v=${Date.now()}`; // dev cache buster; replace with a static version string for prod
 export const PMTILES = {
-  incidents: `${DATA_BASE}/pmtiles/incidents.pmtiles`,
-  lisa: `${DATA_BASE}/pmtiles/lisa_occurrence.pmtiles`
-};
+  incidents: `/data/pmtiles/incidents.pmtiles${bust}`,
+  lisa: `/data/pmtiles/lisa_occurrence.pmtiles${bust}`
+}
+
 export const PARQUET = {
   seriesMonthly: `${DATA_BASE}/parquet/series_monthly.parquet`,
   seriesYearly: `${DATA_BASE}/parquet/series_yearly.parquet`,

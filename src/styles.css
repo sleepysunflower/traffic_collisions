@@ -1,0 +1,289 @@
+/* ===== Root sizing ===== */
+html, body, #root { height: 100%; margin: 0; }
+.app { min-height: 100%; display: flex; flex-direction: column; }
+
+/* ===== Brand palette ===== */
+:root{
+  --black: #090909;
+  --graphite: #262626;
+  --deep-red: #8E1616;
+  --red: #D84040;
+  --grey: #808080;
+  --text: #EDEDED;
+  --panel: #0E0E0E;
+  --panel-2: #101010;
+  --shadow: rgba(0,0,0,.45);
+}
+
+/* ===== Page ===== */
+body{
+  background: var(--black);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ===== (Optional) Top bar strip if you use .bar ===== */
+.bar {
+  background: var(--panel);
+  border-bottom: 1px solid var(--graphite);
+  padding: 10px 16px;
+  color: var(--text);
+}
+
+/* ===== Grid (scrollable page). Big blocks by default. ===== */
+.grid.grid-areas {
+  display: grid;
+  grid-template-areas:
+    "trend heat"
+    "map   map";
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 12px;
+}
+
+/* Make top blocks roomy so charts don't collapse into stripes */
+.grid.grid-areas > div[style*="grid-area:trend"],
+.grid.grid-areas > div[style*="grid-area:heat"] {
+  min-height: 440px;       /* adjust to taste (e.g., 420–520px) */
+}
+
+/* Big map: tall; page remains scrollable */
+.map-card {
+  height: 72vh;            /* adjust to taste (70–80vh) */
+  min-height: 520px;
+}
+
+/* ===== Card & content fill ===== */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--graphite);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 12px 28px var(--shadow);
+}
+.card-body {
+  flex: 1 1 auto;
+  min-height: 0;           /* allow children to use 100% height */
+  padding: 8px;
+}
+.fill { width: 100%; height: 100%; }
+
+/* Floating panels (pie/debug/LISA legend) */
+.floating {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  background: var(--panel-2);
+  border: 1px solid var(--graphite);
+  border-radius: 10px;
+  box-shadow: 0 14px 28px var(--shadow);
+  padding: 10px;
+  width: 360px;            /* slightly wider for legends */
+  max-height: 85vh;
+  color: var(--text);
+}
+
+/* Controls */
+select, button {
+  border: 1px solid var(--graphite);
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 13px;
+  background: var(--panel-2);
+  color: var(--text);
+}
+button {
+  cursor: pointer;
+}
+button:hover{
+  border-color: var(--red);
+  color: var(--red);
+  background: transparent;
+}
+input[type="checkbox"]{
+  accent-color: var(--red);
+}
+
+/* Small helper for folded legends/panels */
+details > summary {
+  cursor: pointer;
+  user-select: none;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: var(--text);
+}
+
+/* Typography helpers */
+.label { font-weight: 700; color: var(--text); }
+.small, .muted { color: var(--grey); }
+
+/* Give explicit height to the top cards so their charts can fill it */
+.top-card { height: 460px; }        /* adjust to taste, e.g., 420–520px */
+.top-card .card { height: 100%; }   /* card fills the wrapper */
+.top-card .card-body { padding: 8px; height: calc(100% - 16px); } /* keep padding */
+.top-card .fill { height: 100%; }   /* chart container can now truly be 100% */
+
+/* ECharts tooltip on dark (class injected by library in some builds) */
+.echarts-tooltip{
+  background:#0F0F0F !important;
+  border:1px solid var(--graphite) !important;
+  color: var(--text) !important;
+}
+
+/* Cool selects + matching scrollbars */
+.select-cool{
+  min-width: 220px;
+  max-width: 320px;
+  background: #101010;
+  color: #EDEDED;
+  border: 1px solid #262626;
+  border-radius: 10px;
+  padding: 6px 8px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+}
+.select-cool option{ padding: 4px 6px; }
+.select-cool:focus{ outline: none; border-color: #D84040; }
+
+/* scrollbars (Chromium/Edge) */
+.select-cool::-webkit-scrollbar{ width: 10px; }
+.select-cool::-webkit-scrollbar-track{ background:#0F0F0F; }
+.select-cool::-webkit-scrollbar-thumb{ background:#2f2f2f; border-radius: 8px; }
+.select-cool::-webkit-scrollbar-thumb:hover{ background:#3e3e3e; }
+
+/* Radios & checkboxes match brand red */
+input[type="radio"],
+input[type="checkbox"]{
+  accent-color: #D84040;
+}
+
+/* Cool, brand-consistent focus instead of blue ring */
+select:focus,
+button:focus,
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(216,64,64,.35);
+  border-color: #D84040;
+}
+
+/* Multi-select selected rows: stop the blue highlight */
+select.select-cool option:checked{
+  background: linear-gradient(#2a2a2a, #2a2a2a);
+  color: #EDEDED;
+}
+
+/* Firefox needs this to keep text high-contrast in selected options */
+@-moz-document url-prefix() {
+  select.select-cool option:checked {
+    background-color: #2a2a2a !important;
+    color: #EDEDED !important;
+  }
+}
+
+/* Make the dropdown popup itself dark on WebKit/Blink */
+select.select-cool {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #101010;
+  color: #EDEDED;
+}
+
+/* Radio/checkbox labels: a bit tighter and on-brand */
+label > input[type="radio"],
+label > input[type="checkbox"]{
+  transform: translateY(1px);
+}
+
+/* When a floating <details> is closed, collapse the panel chrome */
+details.floating:not([open]){
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  width: auto;          /* let it shrink to summary width */
+}
+
+/* Make the summary look like a compact pill */
+details.floating > summary{
+  list-style: none;     /* hide default triangle in some browsers */
+  padding: 6px 10px;
+  background: #101010;
+  border: 1px solid #262626;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #EDEDED;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Keep the open state roomy, per your existing .floating rules */
+details.floating[open]{
+  padding: 10px;
+  background: var(--panel-2, #101010);
+  border: 1px solid var(--graphite, #262626);
+  box-shadow: 0 14px 28px rgba(0,0,0,.45);
+}
+
+/* Make the native marker consistent & subtle */
+details.floating > summary::-webkit-details-marker { display: none; }
+details.floating > summary::before{
+  content: '▸';
+  display: inline-block;
+  transition: transform .15s ease;
+  opacity: .8;
+}
+details.floating[open] > summary::before{ transform: rotate(90deg); }
+
+/* ========= Model tabs: compact chart widths (Occurrence & Severity) ========= */
+/* ECharts renders a positioned root inside our container; constrain it. */
+.card .echarts,
+.card .echart,
+.card [class^="echart"],
+.card [class*=" echart"],
+.card [class^="echarts"],
+.card [class*=" echarts"] {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Fallback: our model charts in these tabs use a ~260px height.
+   If a container (or its immediate child) has that height, cap width. */
+.card > div[style*="height: 260px"],
+.card div[style*="height: 260px"] {
+  max-width: 520px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Make the card content respect the max width by not forcing stretch */
+.card > div[style*="height: 260px"] { width: auto; }
+/* =========================
+   Model tabs: force two-up rows
+   (affects the nested rows that hold
+   Confusion Matrix + Report, and
+   Pred vs Obs + Key indices)
+   ========================= */
+.page .grid .grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 12px !important;
+  align-items: start;
+}
+
+/* Keep them stacked on narrow screens */
+@media (max-width: 1100px) {
+  .page .grid .grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Ensure cards inside those rows don’t auto-stretch wider than half */
+.page .grid .grid > .card {
+  min-width: 0;            /* prevents overflow pushing to next line */
+  width: auto;             /* let grid control the width */
+  box-sizing: border-box;  /* keep padding inside the half width */
+}
