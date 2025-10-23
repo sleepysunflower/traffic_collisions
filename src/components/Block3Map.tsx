@@ -7,6 +7,7 @@ import { useFilters } from '../store/filters'
 import { parquetQuery } from '../lib/duck'
 import { installPMTilesProtocol, addPMSource } from '../lib/tiles'
 import { PMTILES, PARQUET } from '../config'
+import { asset } from '../utils/asset';
 
 /** Variables (unified ROUTE_ASPECT) */
 const VAR_OPTIONS = [
@@ -155,7 +156,7 @@ export default function Block3Map(){
   const [dict, setDict] = React.useState<DictTable | any>({})
   const [dictLoaded, setDictLoaded] = React.useState<boolean>(false)
   React.useEffect(()=>{
-    fetch('/data/dictionary.json')
+    fetch(asset('data/dictionary.json'))
       .then(r => r.ok ? r.json() : {})
       .then((j)=>{ setDict(j||{}); setDictLoaded(true) })
       .catch(()=> setDictLoaded(true))
@@ -307,7 +308,7 @@ export default function Block3Map(){
       // NEIGHBORHOODS (Quartiers)
       map.addSource('quartiers', {
         type: 'geojson',
-        data: '/data/basemap/MTL_quartier.geojson',
+        data: asset('data/basemap/MTL_quartier.geojson'),
         generateId: true
       } as any)
 

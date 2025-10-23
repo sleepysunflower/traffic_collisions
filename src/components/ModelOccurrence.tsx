@@ -9,11 +9,12 @@ import { run as runOnnx } from "../lib/infer";
 import { useFullscreenModal } from "./useFullscreenModal";
 import { modelThemeName, registerModelTheme } from "../mtheme";
 import "../mstyles.css";
+import { asset } from "../utils/asset"
 
-const OCC_ONNX_PATH     = "/data/models/occurrence.onnx";
-const OCC_META_PATH     = "/data/models/occurrence_meta.json";
-const DICT_PATH         = "/data/dictionary.json";
-const OCC_GINI_CSV_PATH = "/data/models/occurrence_gini.csv";
+const OCC_ONNX_PATH = "https://pub-853864c73d334eac8a44f5923b069c11.r2.dev/collision/occurrence.onnx";
+const OCC_META_PATH     = asset("data/models/occurrence_meta.json");
+const DICT_PATH         = asset("data/dictionary.json");
+const OCC_GINI_CSV_PATH = asset("data/models/occurrence_gini.csv");
 
 const METRICS: Record<string, number> = {
   base_MAE: 0.37910470803572993,

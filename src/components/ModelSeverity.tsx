@@ -8,12 +8,13 @@ import { run as runOnnx } from "../lib/infer";
 import { useFullscreenModal } from "./useFullscreenModal";
 import { modelThemeName, registerModelTheme } from "../mtheme";
 import "../mstyles.css";
+import { asset } from "../utils/asset";
 
-const SEV_ONNX_PATH    = "/data/models/severity_reg.onnx";
-const SEV_META_PATH    = "/data/models/severity_reg_meta.json";
-const DICT_PATH        = "/data/dictionary.json";
-const SEV_METRICS_PATH = "/data/models/severity_metrics.json";
-const SEV_PERM_CSV_PATH= "/data/models/severity_perm.csv";
+const SEV_ONNX_PATH     = asset("data/models/severity_reg.onnx");
+const SEV_META_PATH     = asset("data/models/severity_reg_meta.json");
+const DICT_PATH         = asset("data/dictionary.json");
+const SEV_METRICS_PATH  = asset("data/models/severity_metrics.json");
+const SEV_PERM_CSV_PATH = asset("data/models/severity_perm.csv");
 
 type SevMeta = {
   model_name: string;
