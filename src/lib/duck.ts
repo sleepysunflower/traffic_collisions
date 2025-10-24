@@ -1,56 +1,61 @@
 // src/lib/duck.ts
-import * as duckdb from '@duckdb/duckdb-wasm'
+import * as duckdb from '@duckdb/duckdb-wasm';
+import { asset } from '../utils/asset';
 
-// EH build (good on Windows/Vite)
-import DUCKDB_WASM_URL from '@duckdb/duckdb-wasm/dist/duckdb-eh.wasm?url'
-import DUCKDB_WORKER_URL from '@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js?url'
+const bundles: duckdb.DuckDBBundles = {
+  mvp: {
+    mainModule: asset('duckdb/duckdb-mvp.wasm'),
+    mainWorker: asset('duckdb/duckdb-browser-mvp.worker.js'),
+  },
+  eh: {
+    mainModule: asset('duckdb/duckdb-eh.wasm'),
+    mainWorker: asset('duckdb/duckdb-browser-eh.worker.js'),
+  },
+};
 
-let dbPromise: Promise<duckdb.AsyncDuckDB> | null = null
-let httpfsReady = false
+// singletons
+let dbPromise: Promise<duckdb.AsyncDuckDB> | null = null;
+let connPromise: Promise<duckdb.AsyncDuckDBConnection> | null = null;
+let httpfsReady = false; // ensure we run INSTALL/LOAD only once
 
-function toAbs(urlOrPath: string) {
-  // Turn "./data/…" into absolute URL (works in dev and on GitHub Pages)
-  return new URL(urlOrPath, window.location.href).toString()
-}
+async function getDuckDB(): Promise<duckdb.AsyncDuckDB> {
+  if (!dbPromise) {
+    dbPromise = (async () => {
+      const logger = new duckdb.ConsoleLogger();
+      const bundle = await duckdb.selectBundle(bundles);
 
-// ✅ Correct regex: capture the quote and reuse it; no extra escapes
-function rewriteReadParquet(sql: string) {
-  return sql.replace(/read_parquet\((['"])([^'"]+)\1\)/g, (_m, _q, relPath) => {
-    const abs = toAbs(relPath)
-    return `read_parquet('${abs}')`
-  })
-}
+      // bundle.mainWorker can be string | URL | null in typings; we assert non-null.
+      const mainWorker = bundle.mainWorker!;
+      const worker = new Worker(mainWorker); // OK: Worker accepts string | URL
 
-export async function getDB() {
-  if (dbPromise) return dbPromise
-  const logger = new duckdb.ConsoleLogger()
-  const worker = new Worker(DUCKDB_WORKER_URL, { type: 'module' })
-  const db = new duckdb.AsyncDuckDB(logger, worker)
-  await db.instantiate(DUCKDB_WASM_URL)
-  dbPromise = Promise.resolve(db)
-  return dbPromise
-}
-
-async function ensureHTTPFS(conn: duckdb.AsyncDuckDBConnection) {
-  if (httpfsReady) return
-  await conn.query(`INSTALL httpfs; LOAD httpfs;`)
-  await conn.query(`SET enable_http_metadata_cache=true; SET enable_object_cache=true;`)
-  httpfsReady = true
-}
-
-export async function parquetQuery<T = any>(sql: string): Promise<T[]> {
-  const db = await getDB()
-  const conn = await db.connect()
-  try {
-    await ensureHTTPFS(conn)
-    const rewritten = rewriteReadParquet(sql)
-    // Uncomment to verify once:
-    // console.log('[DuckDB SQL]', rewritten)
-    const res = await conn.query(rewritten)
-    const rows: T[] = []
-    for (let i = 0; i < res.numRows; i++) rows.push(res.get(i) as T)
-    return rows
-  } finally {
-    await conn.close()
+      const db = new duckdb.AsyncDuckDB(logger, worker);
+      await db.instantiate(bundle.mainModule); // load wasm
+      // ❌ removed: await db.open({ query: 'INSTALL httpfs; LOAD httpfs;' });
+      return db;
+    })();
   }
+  return dbPromise;
+}
+
+async function getConn(): Promise<duckdb.AsyncDuckDBConnection> {
+  if (!connPromise) {
+    connPromise = (async () => {
+      const db = await getDuckDB();
+      const c = await db.connect();
+      if (!httpfsReady) {
+        // Run on the connection instead of db.open({ query: ... })
+        await c.query('INSTALL httpfs; LOAD httpfs;');
+        httpfsReady = true;
+      }
+      return c;
+    })();
+  }
+  return connPromise;
+}
+
+/** Run a DuckDB query and return JS objects */
+export async function parquetQuery<T = any>(sql: string): Promise<T[]> {
+  const conn = await getConn();
+  const result = await conn.query(sql); // ArrowResult
+  return result.toArray() as T[];
 }

@@ -2,6 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 
+import * as ort from 'onnxruntime-web';
+import { asset } from './utils/asset';
+ort.env.wasm.wasmPaths = asset('onnx/'); // now loads from /traffic_collisions/onnx/
+
 import Landing from "./Landing";
 import App from "./App";
 import ModelPage from "./model";
