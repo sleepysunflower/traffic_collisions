@@ -1,0 +1,159 @@
+﻿variable,feature,importance
+AN,year,0.021609633
+CD_ASPCT_ROUTE_11.0,Slope profile: Straight-flat,0.002763742
+CD_ASPCT_ROUTE_12.0,Slope profile: Straight-uphill,0.000461467
+CD_ASPCT_ROUTE_13.0,Slope profile: Straight-downhill,0.000824102
+CD_ASPCT_ROUTE_14.0,Slope profile: Straight-bottom of hill,0.000517351
+CD_ASPCT_ROUTE_21.0,Slope profile: Curve-flat,0.000833258
+CD_ASPCT_ROUTE_22.0,Slope profile: Curve-uphill,6.30E-05
+CD_ASPCT_ROUTE_23.0,Slope profile: Curve-downhill,0.00011958
+CD_ASPCT_ROUTE_24.0,Slope profile: Curve-bottom of hill,2.98E-05
+CD_CATEG_ROUTE_11.0,Road category: Ramp/service road,0.003536467
+CD_CATEG_ROUTE_12.0,Road category: Numbered highway,0.001209669
+CD_CATEG_ROUTE_13.0,Road category: Main arterial,0.036121379
+CD_CATEG_ROUTE_14.0,Road category: Residential street,0.008997135
+CD_CATEG_ROUTE_15.0,Road category: Local road,0.000213575
+CD_CATEG_ROUTE_16.0,Road category: Alley,0.001060176
+CD_CATEG_ROUTE_19.0,Road category: Other public road,0.000263404
+CD_CATEG_ROUTE_21.0,Road category: Parking lot,0.042709191
+CD_CATEG_ROUTE_22.0,Road category: Private lot,0.002237317
+CD_CATEG_ROUTE_23.0,Road category: Private road,2.48E-05
+CD_CATEG_ROUTE_24.0,Road category: Forest road,2.46E-07
+CD_CATEG_ROUTE_25.0,Road category: Designated trail,0
+CD_CATEG_ROUTE_29.0,Road category: Other non-public road,0.000100354
+CD_COND_METEO_11.0,Weather: Clear,0.002635881
+CD_COND_METEO_12.0,Weather: Cloudy,0.001778887
+CD_COND_METEO_13.0,Weather: Fog,3.48E-05
+CD_COND_METEO_14.0,Weather: Rain/drizzle,0.001561231
+CD_COND_METEO_15.0,Weather: Shower,0.000167206
+CD_COND_METEO_16.0,Weather: Strong wind,3.76E-05
+CD_COND_METEO_17.0,Weather: Snow/hail,0.00098456
+CD_COND_METEO_18.0,Weather: Snowstorm,0.000144403
+CD_COND_METEO_19.0,Weather: Freezing rain,5.55E-05
+CD_COND_METEO_99.0,Weather: Other,0.000169873
+CD_CONFG_ROUTE_1.0,Road configuration: One-way,0.011259676
+CD_CONFG_ROUTE_2.0,Road configuration: Two-way (1 lane/dir),0.004481004
+CD_CONFG_ROUTE_3.0,Road configuration: Two-way (multi-lane),0.004622536
+CD_CONFG_ROUTE_4.0,Road configuration: Divided (crossable median),0.002609863
+CD_CONFG_ROUTE_5.0,Road configuration: Divided (uncrossable median),0.002371139
+CD_CONFG_ROUTE_9.0,Road configuration: Other,0.007036554
+CD_ECLRM_1.0,Lighting: Daylight,0.002734575
+CD_ECLRM_2.0,Lighting: Twilight,0.000962885
+CD_ECLRM_3.0,Lighting: Night lit,0.003058411
+CD_ECLRM_4.0,Lighting: Night unlit,0.000182354
+CD_ENVRN_ACCDN_1.0,Landuse: School,0.000558289
+CD_ENVRN_ACCDN_2.0,Landuse: Residential,0.003540922
+CD_ENVRN_ACCDN_3.0,Landuse: Commercial,0.004413005
+CD_ENVRN_ACCDN_4.0,Landuse: Industrial,0.003327589
+CD_ENVRN_ACCDN_5.0,Landuse: Rural,9.42E-05
+CD_ENVRN_ACCDN_6.0,Landuse: Forestry,3.50E-06
+CD_ENVRN_ACCDN_7.0,Landuse: Recreational,0.000267432
+CD_ENVRN_ACCDN_9.0,Landuse: Other,0.000235103
+CD_ETAT_CHASS_1.0,Roadway condition: Good,0.010797761
+CD_ETAT_CHASS_2.0,Roadway condition: Under construction/repair,0.002070189
+CD_ETAT_CHASS_3.0,Roadway condition: Ruts,1.30E-05
+CD_ETAT_CHASS_4.0,Roadway condition: Major cracks,8.31E-06
+CD_ETAT_CHASS_5.0,Roadway condition:Potholes,0.001538587
+CD_ETAT_CHASS_6.0,Roadway condition: Uneven surface,1.69E-05
+CD_ETAT_CHASS_9.0,Roadway condition: Other,0.000353665
+CD_ETAT_SURFC_11.0,Surface condition: Dry,0.002497598
+CD_ETAT_SURFC_12.0,Surface condition: Wet,0.003037959
+CD_ETAT_SURFC_13.0,Surface condition: Aquaplaning,1.58E-05
+CD_ETAT_SURFC_14.0,Surface condition: Sand/gravel,2.18E-05
+CD_ETAT_SURFC_15.0,Surface condition: Slush,0.000290505
+CD_ETAT_SURFC_16.0,Surface condition: Snow,0.003216611
+CD_ETAT_SURFC_17.0,Surface condition: Packed snow,0.000242008
+CD_ETAT_SURFC_18.0,Surface condition: Icy,0.000879873
+CD_ETAT_SURFC_19.0,Surface condition: Muddy,9.70E-07
+CD_ETAT_SURFC_20.0,Surface condition: Oily,0
+CD_ETAT_SURFC_99.0,Surface condition: Other,7.89E-05
+CD_GENRE_ACCDN_31.0,Type of collision: Vehicle,0.088886151
+CD_GENRE_ACCDN_32.0,Type of collision: Pedestrian,0.14383715
+CD_GENRE_ACCDN_33.0,Type of collision: Cyclist,0.03378129
+CD_GENRE_ACCDN_34.0,Type of collision: Train,1.71E-06
+CD_GENRE_ACCDN_35.0,Type of collision: Deer,7.35E-05
+CD_GENRE_ACCDN_36.0,Type of collision: Moose/bear/caribou,0
+CD_GENRE_ACCDN_37.0,Type of collision: Other animal,0.000259618
+CD_GENRE_ACCDN_38.0,Type of collision: Temporary obstacle,0.002241056
+CD_GENRE_ACCDN_39.0,Type of collision: Detached/thrown object,0.001280845
+CD_GENRE_ACCDN_40.0,Type of collision: Lamp post,0.001434709
+CD_GENRE_ACCDN_41.0,Type of collision: Traffic signal support,0.000730859
+CD_GENRE_ACCDN_42.0,Type of collision: Utility pole,0.001558763
+CD_GENRE_ACCDN_43.0,Type of collision: Tree,0.000466648
+CD_GENRE_ACCDN_44.0,Type of collision: Guardrail section,7.67E-05
+CD_GENRE_ACCDN_45.0,Type of collision: Crash attenuator,3.57E-05
+CD_GENRE_ACCDN_46.0,Type of collision: Guardrail end,1.62E-05
+CD_GENRE_ACCDN_47.0,Type of collision: Bridge/tunnel pillar,6.90E-05
+CD_GENRE_ACCDN_48.0,Type of collision: Snowbank,0.000239637
+CD_GENRE_ACCDN_49.0,Type of collision: Building/wall,0.001533633
+CD_GENRE_ACCDN_50.0,Type of collision: Curb/sidewalk,0.00103506
+CD_GENRE_ACCDN_51.0,Type of collision: Fire hydrant,4.15E-05
+CD_GENRE_ACCDN_52.0,Type of collision: Fence/barrier,0.001291644
+CD_GENRE_ACCDN_53.0,Type of collision: Ditch,1.70E-05
+CD_GENRE_ACCDN_54.0,Type of collision: Rock face,3.07E-07
+CD_GENRE_ACCDN_55.0,Type of collision: Culvert,0
+CD_GENRE_ACCDN_59.0,Type of collision: Other fixed object,0.004199013
+CD_GENRE_ACCDN_71.0,Type of collision: Rollover,5.42E-05
+CD_GENRE_ACCDN_72.0,Type of collision: Overturn,0.000738775
+CD_GENRE_ACCDN_73.0,Type of collision: Submersion/water,5.25E-07
+CD_GENRE_ACCDN_74.0,Type of collision: Fire/explosion,1.80E-06
+CD_GENRE_ACCDN_75.0,Type of collision: Ran off road,7.45E-05
+CD_GENRE_ACCDN_99.0,Type of collision: Other non-collision,0.004461397
+CD_LOCLN_ACCDN_0.0,Longitudinal location: Unspecified,0
+CD_LOCLN_ACCDN_31.0,Longitudinal location: Roundabout,0.000152553
+CD_LOCLN_ACCDN_32.0,Longitudinal location: Intersection (<5m),0.054082512
+CD_LOCLN_ACCDN_33.0,Longitudinal location: Near intersection (5–100m),0.008321794
+CD_LOCLN_ACCDN_34.0,Longitudinal location: Between intersections (100m+),0.00536998
+CD_LOCLN_ACCDN_35.0,Longitudinal location: Level crossing,1.02E-05
+CD_LOCLN_ACCDN_36.0,Longitudinal location: Bridge (over water),2.00E-05
+CD_LOCLN_ACCDN_37.0,Longitudinal location: Other bridge/viaduct,0.000338321
+CD_LOCLN_ACCDN_38.0,Longitudinal location: Tunnel,1.20E-06
+CD_LOCLN_ACCDN_39.0,Longitudinal location: Under bridge/viaduct,8.31E-05
+CD_LOCLN_ACCDN_40.0,Longitudinal location: Shopping center,0.009449124
+CD_LOCLN_ACCDN_99.0,Longitudinal location: Other,0.009809472
+CD_POSI_ACCDN_0.0,Transversal position: Unspecified,0
+CD_POSI_ACCDN_1.0,Transversal position: Reserved lane,0.001040987
+CD_POSI_ACCDN_10.0,Transversal position: Other,0.016493406
+CD_POSI_ACCDN_2.0,Transversal position: Slow lane,0.000590165
+CD_POSI_ACCDN_3.0,Transversal position: Lane merge,8.19E-05
+CD_POSI_ACCDN_4.0,Transversal position: Two-way left turn lane,0.000414642
+CD_POSI_ACCDN_5.0,Transversal position: Bike lane,0.00403782
+CD_POSI_ACCDN_6.0,Transversal position: Traffic lane,0.068182777
+CD_POSI_ACCDN_7.0,Transversal position: Shoulder,0.002545857
+CD_POSI_ACCDN_8.0,Transversal position: Median/traffic island,0.001081975
+CD_POSI_ACCDN_9.0,Transversal position: Sidewalk,0.001544044
+CD_SIT_PRTCE_ACCDN_1.0,Special situation: Spill,0.003827686
+CD_SIT_PRTCE_ACCDN_2.0,Special situation: Load loss,2.37E-05
+CD_SIT_PRTCE_ACCDN_3.0,Special situation: Snow clearing,0.000268543
+CD_SIT_PRTCE_ACCDN_9.0,Special situation: Other,0.001628014
+CD_ZON_TRAVX_ROUTR_0.0,Not specified work zone,3.43E-07
+CD_ZON_TRAVX_ROUTR_1.0,Approaching work zone,0.00016834
+CD_ZON_TRAVX_ROUTR_2.0,Inside work zone,0.000175331
+hour,hour,0.014420476
+JR_SEMN_ACCDN_DI,Sunday,0.001621433
+JR_SEMN_ACCDN_JE,Thursday,0.001921476
+JR_SEMN_ACCDN_LU,Monday,0.001777682
+JR_SEMN_ACCDN_MA,Tuesday,0.001888591
+JR_SEMN_ACCDN_ME,Wednesday,0.001852607
+JR_SEMN_ACCDN_SA,Saturday,0.00160604
+JR_SEMN_ACCDN_VE,Friday,0.001872719
+month,month,0.011197068
+nb_automobile_camion_leger,Number of automobile,0.067275098
+nb_autres_types,Number of other type,0.000521487
+nb_bicyclette,Number of bicycle,0.038958656
+nb_camionLourd_tractRoutier,Number of heavy track,0.009124013
+nb_cyclomoteur,Number of moped,0.002256068
+nb_motocyclette,Number of motorcycle,0.012377249
+nb_motoneige,Number of snowmobile,0
+nb_outil_equipement,Number of tool/equipment vehicles,0.000959862
+nb_taxi,Number of taxi,0.002244107
+nb_tous_autobus_minibus,Number of minibus,0.002852563
+nb_urgence,Number of emergency vehicles,0.017739109
+nb_veh_non_precise,Number of non specified,0.100843704
+nb_VHR,Number of off-road vehicles,0
+quarter,quarter,0.005898496
+time_of_day_Afternoon,Afternoon,0.003536716
+time_of_day_Evening,Evening,0.001854474
+time_of_day_Morning,Morning,0.002011932
+time_of_day_Night,Night,0.002287239
+VITESSE_AUTOR,Speed,0.004813345

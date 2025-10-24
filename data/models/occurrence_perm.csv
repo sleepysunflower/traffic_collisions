@@ -1,0 +1,61 @@
+feature,importance
+population_aw,0.158002744
+intersection_count,0.128409043
+landuse__Activités diversifiées,0.05543851
+aadt_mean,0.045147398
+landuse__Dominante résidentielle,0.037155877
+poi_total,0.032055242
+RC_rc_2010_indice pci,0.018186116
+RC_rc_2010_indice iri,0.01716504
+landuse__Industrie,0.015087805
+RC_rc_2015_indice iri,0.012826102
+RC_rc_2015_indice pci,0.0106999
+landuse__Centre-ville d'agglomération,0.006943787
+poi_type__Organisme communautaire et centre de loisirs,0.006683932
+poi_type__Parc,0.006404213
+poi_type__Station de métro,0.004884392
+landuse__Conservation,0.004699003
+poi_type__Bibliothèque publique,0.00457492
+poi_type__Poste d'attente de taxis,0.004268357
+poi_type__Centre commercial,0.004205783
+RC_rc_2018_indice iri,0.003937546
+RC_rc_2018_indice pci,0.003181476
+poi_type__Centre de service gouvernemental,0.003146134
+landuse__Grand espace vert ou récréation,0.003003936
+poi_type__Hôtel,0.002816169
+solar_radiation_v,0.00255636
+landuse__Grande emprise ou grande infrastructure publique,0.001939344
+poi_type__Théâtre / salle de spectacle / petit lieu de diffusion,0.001808055
+poi_type__École primaire,0.001387002
+poi_type__École secondaire et professionnelle,0.001051127
+poi_type__Place publique,0.001048418
+poi_type__Caserne de pompiers,0.001037307
+precipitation_v,0.000977702
+poi_type__Artère commerciale,0.000872095
+poi_type__CLSC,0.000759337
+poi_type__Art public,0.00071114
+poi_type__Rue piétonne,0.000640326
+poi_type__Service consulaire,0.000513272
+poi_type__Piscine intérieure,0.000486308
+max_wind_speed_v,0.000459366
+poi_type__Police de quartier,0.000450171
+poi_type__Jardin communautaire,0.000391657
+poi_type__Bureau Accès Montréal et bureaux municipaux,0.000350606
+landuse__Agricole,0.000346327
+poi_type__Centre sportif intérieur,0.000290589
+poi_type__Autre catégorie d'établissement d'hébergement,0.000271243
+poi_type__Musée et centre d'interprétation / d'exposition,0.00027034
+rain_v,0.000243665
+poi_type__Hôpital,0.000153598
+poi_type__Cégep et université,0.000126926
+poi_type__Auberge de jeunesse,0.00011443
+poi_type__Bâtiment historique / patrimonial,0.000108199
+min_dew_point_v,3.26E-05
+min_temperature_v,6.17E-06
+poi_type__Lieu de diffusion municipal,-4.74E-05
+max_dew_point_v,-0.000111748
+snow_on_ground_v,-0.000116709
+min_relative_humidity_v,-0.00014605
+snow_v,-0.000189028
+max_temperature_v,-0.000298176
+max_relative_humidity_v,-0.000396968
