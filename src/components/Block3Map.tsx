@@ -293,13 +293,13 @@ export default function Block3Map(){
       // 2) Not significant = white
       map.addLayer({
         id:'lisa-ns-fill', type:'fill', source:'lisa', 'source-layer': lisaSrcLayer,
-        filter: ['!in', ['get','cluster'], ['literal',['HH','HL','LH','LL']]],
+        filter: ['!in', 'cluster', 'HH', 'HL', 'LH', 'LL'],
         paint: { 'fill-color': '#FFFFFF', 'fill-opacity': 0.35 },
         layout: { visibility: showLISA ? 'visible' : 'none' }
       })
       map.addLayer({
         id:'lisa-ns-line', type:'line', source:'lisa', 'source-layer': lisaSrcLayer,
-        filter: ['!in', ['get','cluster'], ['literal',['HH','HL','LH','LL']]],
+        filter: ['!in', 'cluster', 'HH', 'HL', 'LH', 'LL'],
         paint: { 'line-color':'#BDBDBD', 'line-width':0.4, 'line-opacity':0.6 },
         layout: { visibility: showLISA ? 'visible' : 'none' }
       })
@@ -480,7 +480,7 @@ export default function Block3Map(){
     if (filters.severities?.length) clauses.push(['in',['get','GRAVITE'],['literal',filters.severities]])
     if (filters.quartiers?.length)  clauses.push(['in',['get','no_qr'],['literal',filters.quartiers]])
     if (filters.arrs?.length)       clauses.push(['in',['get','no_arr'],['literal',filters.arrs]])
-    map.setFilter('inc-pts', clauses)
+    map.setFilter('inc-pts', clauses as any)
   }
 
   // Convert UI var -> parquet col

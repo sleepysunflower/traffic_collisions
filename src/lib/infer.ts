@@ -1,66 +1,76 @@
-import * as ort from "onnxruntime-web";
+// src/lib/infer.ts
+import * as ort from 'onnxruntime-web';
 
-// Serve WASM locally to avoid MIME/CORS issues
-ort.env.wasm.wasmPaths = "/onnx/";
-// (optional) tune if you like:
-// ort.env.wasm.simd = true;
-// ort.env.wasm.numThreads = 4;
+export type ProgressFn = (percent: number) => void;
 
-export type RunShape = { batch: number; features: number };
-type ProgressFn = (pct: number) => void;
-
-export async function createSessionWithProgress(
-  url: string,
-  sessionOptions?: ort.InferenceSession.SessionOptions
-) {
-  const dlSubs: ProgressFn[] = [];
-  const initSubs: ProgressFn[] = [];
-  const onDownload = (fn: ProgressFn) => dlSubs.push(fn);
-  const onInit = (fn: ProgressFn) => initSubs.push(fn);
-
-  const res = await fetch(url);
-  if (!res.ok || !res.body) throw new Error(`Failed to fetch ONNX: ${url} (${res.status})`);
-  const total = Number(res.headers.get("Content-Length") || 0);
-  const reader = res.body.getReader();
-  const chunks: Uint8Array[] = [];
-  let loaded = 0;
-
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    if (value) {
-      chunks.push(value);
-      loaded += value.byteLength;
-      if (total > 0) {
-        const pct = Math.min(100, Math.round((loaded / total) * 100));
-        dlSubs.forEach(fn => fn(pct));
-      }
-    }
-  }
-  dlSubs.forEach(fn => fn(100));
-
-  const blob = new Uint8Array(loaded);
-  let off = 0;
-  for (const c of chunks) { blob.set(c, off); off += c.byteLength; }
-
-  onInit(5);
-  const session = await ort.InferenceSession.create(blob, sessionOptions);
-  onInit(100);
-
-  return { session, onDownload, onInit };
+export interface InferOptions {
+  onInit?: ProgressFn;
+  onDownload?: ProgressFn;
+  onProgress?: ProgressFn;
+  onDone?: () => void;
 }
 
+/* safe-call helpers */
+const safe = <T extends any[]>(fn?: (...args: T) => void) =>
+  (...args: T) => { try { fn?.(...args) } catch { /* ignore */ } };
+
+/** What your components expect */
 export async function run(
   session: ort.InferenceSession,
   inputName: string,
-  data: Float32Array,
-  shape: RunShape
-) {
-  const tensor = new ort.Tensor("float32", data, [shape.batch, shape.features]);
-  const feeds: Record<string, ort.Tensor> = { [inputName]: tensor };
-  const results = await session.run(feeds);
-  const firstKey = Object.keys(results)[0];
-  const arr = results[firstKey].data as Float32Array | Float64Array | Int32Array;
-  if (arr && (arr as any).length === 1) return Number((arr as any)[0]);
-  return results;
+  x: Float32Array,
+  shape: { batch: number; features: number }
+): Promise<ort.Tensor | Record<string, ort.Tensor>> {
+  const input = new ort.Tensor('float32', x, [shape.batch, shape.features]);
+  const feeds: Record<string, ort.Tensor> = { [inputName]: input };
+  const out = await session.run(feeds);
+  const keys = Object.keys(out);
+  return keys.length === 1 ? out[keys[0]] : out;
+}
+
+/** What sessions.ts expects:
+ *   const { session, onDownload, onInit } = await createSessionWithProgress(url);
+ * Where onDownload/onInit are REGISTRARS: (fn: ProgressFn) => void
+ */
+export async function createSessionWithProgress(
+  modelUrl: string,
+  opts?: InferOptions
+): Promise<{
+  session: ort.InferenceSession;
+  onDownload: (fn: ProgressFn) => void;
+  onInit: (fn: ProgressFn) => void;
+}> {
+  // subscriber lists
+  const downloadSubs: ProgressFn[] = [];
+  const initSubs: ProgressFn[] = [];
+  const emitTo = (subs: ProgressFn[], v: number) => {
+    for (const fn of subs) { safe(fn)(v); }
+  };
+
+  // registrar functions (what sessions.ts wants)
+  const onDownload = (fn: ProgressFn) => { if (typeof fn === 'function') downloadSubs.push(fn); };
+  const onInit     = (fn: ProgressFn) => { if (typeof fn === 'function') initSubs.push(fn); };
+
+  // initial ticks
+  safe(opts?.onInit)(5);
+  emitTo(initSubs, 5);
+  safe(opts?.onDownload)(10);
+  emitTo(downloadSubs, 10);
+
+  // (optional) set wasm paths once elsewhere:
+  // ort.env.wasm.wasmPaths = import.meta.env.BASE_URL + 'onnx/';
+
+  const session = await ort.InferenceSession.create(modelUrl, {
+    executionProviders: ['wasm'],
+  });
+
+  // finished ticks
+  safe(opts?.onProgress)(100);
+  safe(opts?.onDownload)(100);
+  safe(opts?.onInit)(100);
+  emitTo(downloadSubs, 100);
+  emitTo(initSubs, 100);
+  safe(opts?.onDone)();
+
+  return { session, onDownload, onInit };
 }
